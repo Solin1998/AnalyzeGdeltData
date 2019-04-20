@@ -1,0 +1,5 @@
+
+中文：从gdelt下载csv文件并提取url地址，用python多线程爬取所有的url再通过newspaper库分析其中的文本文件，并用算法做出总结
+
+English: download CSV file from gdelt and extract url address, use python multi-thread to crawl all urls,
+analyze the text file through newspaper library, and make summary with algorithm
