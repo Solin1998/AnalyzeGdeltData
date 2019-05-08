@@ -1,0 +1,54 @@
+#delete duplicate url address and keep the original format of the csv file
+
+
+
+#--code python--
+
+#!/usr/bin/env python 
+# -*- coding:utf-8 -*-
+
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+
+import csv
+import math
+import pandas as pd
+import numpy as np
+from pandas import DataFrame
+from pandas import DataFrame,Series
+
+
+def get_url(open_file):
+    need=[]
+    with open(open_file,encoding='utf-8') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            for j in row:
+                j.replace('\t', '')
+            last_element = list(row)[-1]
+            url = last_element.split("	")[-1]
+            row_list = ["  ".join(ele.split("\t")) for ele in row]
+            if "//" in url:
+                need_dict={}
+                url = url.strip()
+                need_dict["row_list"]=row_list
+                need_dict['url']=url
+                need.append(need_dict)
+            else:
+                continue
+    df=pd.DataFrame(need,columns=["row_list","url"])
+    df.drop_duplicates(subset='url',keep='first',inplace=True)
+    for i in df.iloc[:,0]:
+        s="".join(i)
+        out=open("D:/gdelt2"+str(open_file)[9:],"a",encoding="utf-8")
+        out.writelines(s+'\n')
+
+#file path
+get_url("D:/gdelt1/20130401.export.CSV")
+
+
+
+
+
+
