@@ -3,3 +3,7 @@
 
 English: download CSV file from gdelt and extract url address, use python multi-thread to crawl all urls,
 analyze the text file through newspaper library, and make summary with algorithm
+
+
+tips:
+0.csv：illustrate some of the url address
